@@ -53,22 +53,26 @@ export default class MessageInput extends React.Component {
     var secretModeText = this.state.secretMode ? "BACK TO NORMAL" : "ENABLE SECRET MODE";
     var sendButtonText = this.state.secretMode ? "SEND SECRET" : "SEND";
     var secretText = this.state.secretMode ? <div className="MessageInput">Secret text: {base64.encode(this.state.message)}</div> : <div />;
-    return (
-     <div>
+    
+    console.log(secretModeText);
+    
+      return (
+      <div>
        {secretText}
-         <form className="MessageInput" onSubmit={this.sendMessage.bind(this)}>
-           <Input className="MessageInput-input" placeholder="Send Message"
-             value={this.state.message} onChange={this.handleChange.bind(this)}
-             autoFocus={true}/>
-           <Button type="submit" raised color="primary">
-            {sendButtonText}
-          </Button>
-           <Button type="button" raised color="secondary"
-             onClick={this.toggleSecretMode.bind(this)}>
-             {secretModeText}
+        <form className="MessageInput" onSubmit={this.sendMessage.bind(this)}>
+          <Input className="MessageInput-input" placeholder="Send Message"
+            value={this.state.message} onChange={this.handleChange.bind(this)}
+            autoFocus={true}/>
+          <Button type="submit" raised color="primary">
+           {sendButtonText}
            </Button>
-         </form>
-       </div>
-    );
+          <Button type="button" raised color="secondary">
+            onClick={this.toggleSecretMode.bind(this)}
+            {secretModeText}
+          </Button>
+        </form>
+      </div>
+     );
   }
+  
 }
